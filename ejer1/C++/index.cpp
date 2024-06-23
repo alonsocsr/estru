@@ -39,6 +39,10 @@ void sort(map<string, int>& M)
 
 int main()
 {
+
+    // Measure execution time
+    auto start = chrono::high_resolution_clock::now();
+
     /*puntero al archivo*/
     ifstream file;
     //se abre el archivo en modo lectura
@@ -114,5 +118,9 @@ int main()
 
     sort(M);
 
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double, milli> elapsed = end - start;
+    cout << "Execution time: " << elapsed.count() << " ms" << endl;
+    
     return 0;
 }

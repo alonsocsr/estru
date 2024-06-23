@@ -6,6 +6,9 @@ const fs = require('fs');
 
 // se lee el archivo en la funcion y se procesa
 function countWordFrequency(filename) {
+
+    const startTime = process.hrtime();
+
     //arrow function:
     // tercer parámetro es una funcion callback
     // extrae el dato y error y lo representa si ocurre
@@ -36,8 +39,14 @@ function countWordFrequency(filename) {
             console.log(`${word}: ${count}`);
         });
     });
+    
+    
+    const endTime = process.hrtime(startTime);
+    const executionTime = (endTime[0] * 1000) + (endTime[1] / 1e6);
+    console.log(`Execution Time: ${executionTime} milliseconds`);
+    
 }
-
 // Example usage:
 const filename = '../texto.txt';
 countWordFrequency(filename);
+
