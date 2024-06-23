@@ -1,3 +1,5 @@
+require 'benchmark'
+
 # Método para leer un archivo y contar la frecuencia de cada palabra
 def contar_palabras(archivo)
     frecuencias = Hash.new(0) # Hash para almacenar la frecuencia de cada palabra
@@ -19,7 +21,7 @@ def contar_palabras(archivo)
   end
   
   # Método para mostrar las palabras más frecuentes
-  def mostrar_frecuencias(frecuencias, limite=20)
+  def mostrar_frecuencias(frecuencias, limite=15)
     frecuencias.sort_by { |palabra, cuenta| -cuenta }[0...limite].each do |palabra, cuenta|
       puts "#{palabra}: #{cuenta}"
     end
@@ -31,3 +33,14 @@ def contar_palabras(archivo)
   # Contar las palabras y mostrar las más frecuentes
   frecuencias = contar_palabras(archivo)
   mostrar_frecuencias(frecuencias)
+
+  # Medir el tiempo de ejecución del conteo de palabras y mostrar las palabras más frecuentes
+  tiempo = Benchmark.measure do
+    frecuencias = contar_palabras(archivo)
+    mostrar_frecuencias(frecuencias)
+  end
+  
+  tiempo_ms = tiempo.real * 1000
+  puts "Tiempo de ejecución: #{tiempo_ms.round(2)} milisegundos"
+
+  
