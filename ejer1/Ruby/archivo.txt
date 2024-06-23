@@ -1,5 +1,0 @@
-Hello, world! This is a test. It's a small world, after all.
-This test is just a sample test to check how frequently words appear in this text.
-The quick brown fox jumps over the lazy dog. The lazy dog didn't seem to mind.
-Coding in Ruby is fun. Ruby makes it easy to work with text and files.
-Let's see how this text file is processed by our Ruby script.
