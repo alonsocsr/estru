@@ -84,10 +84,10 @@ public class multiplicacionMatrices {
     }
 
     public static void main(String[] args) {
-        int filasA = 3;
-        int columnasA = 2;
-        int filasB = 2;
-        int columnasB = 3;
+        int filasA = 200;
+        int columnasA = 250;
+        int filasB = 250;
+        int columnasB = 210;
 
         multiplicarMatrices(filasA, columnasA, filasB, columnasB);
     }

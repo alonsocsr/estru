@@ -4,25 +4,18 @@
 //puntero al archivo
 const fs = require('fs');
 
-// se lee el archivo en la funcion y se procesa
+// Function to read the file and process its content
 function countWordFrequency(filename) {
-
     const startTime = process.hrtime();
 
-    //arrow function:
-    // tercer parámetro es una funcion callback
-    // extrae el dato y error y lo representa si ocurre
-    fs.readFile(filename, 'utf8', (err, data) => {
-        if (err) {
-            console.error(`Error reading file: ${err}`);
-            return;
-        }
+    try {
+        const data = fs.readFileSync(filename, 'utf8');
 
-        // Remueve los signos de puntuación y convierte a minúscula
+        // Convert to lowercase and remove punctuation
         const cleanData = data.toLowerCase().replace(/[^\w\s]/g, '');
         const words = cleanData.split(/\s+/);
 
-        // contar la frecuencia de las palabras
+        // Count word frequencies
         const wordCounts = {};
         words.forEach(word => {
             if (word) {
@@ -30,22 +23,25 @@ function countWordFrequency(filename) {
             }
         });
 
-        // convertir a un array de pares [word, frequency]
+        // Convert to an array of [word, frequency] pairs
         const sortedWordCounts = Object.entries(wordCounts)
             .sort((a, b) => b[1] - a[1]);
 
-        // Imprimir las palabras
+        
+        // Print the word frequencies
         sortedWordCounts.forEach(([word, count]) => {
             console.log(`${word}: ${count}`);
         });
-    });
-    
-    
-    const endTime = process.hrtime(startTime);
-    const executionTime = (endTime[0] * 1000) + (endTime[1] / 1e6);
-    console.log(`Execution Time: ${executionTime} milliseconds`);
-    
+
+        const endTime = process.hrtime(startTime);
+        const executionTime = (endTime[0] * 1000) + (endTime[1] / 1e6);
+        console.log(`Execution Time: ${executionTime} milliseconds`);
+
+    } catch (err) {
+        console.error(`Error reading file: ${err}`);
+    }
 }
+
 // Example usage:
 const filename = '../texto.txt';
 countWordFrequency(filename);
