@@ -29,10 +29,6 @@ def contar_palabras(archivo)
   
   # Nombre del archivo de texto
   archivo = '../texto.txt'
-  
-  # Contar las palabras y mostrar las más frecuentes
-  frecuencias = contar_palabras(archivo)
-  mostrar_frecuencias(frecuencias)
 
   # Medir el tiempo de ejecución del conteo de palabras y mostrar las palabras más frecuentes
   tiempo = Benchmark.measure do
