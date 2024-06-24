@@ -35,7 +35,7 @@ public class ContarPalabras {
     }
 
     // Método para mostrar las palabras más frecuentes
-    public static void mostrarFrecuencias(Map<String, Integer> frecuencias, int limite) {
+    public static void mostrarFrecuencias(Map<String, Integer> frecuencias) {
         // Crear una lista de entradas del mapa
         List<Map.Entry<String, Integer>> lista = new ArrayList<>(frecuencias.entrySet());
 
@@ -47,9 +47,8 @@ public class ContarPalabras {
             }
         });
 
-        // Mostrar las 'limite' palabras más frecuentes
-        for (int i = 0; i < limite && i < lista.size(); i++) {
-            Map.Entry<String, Integer> entry = lista.get(i);
+        // Mostrar todas las palabras con sus frecuencias
+        for (Map.Entry<String, Integer> entry : lista) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
@@ -61,7 +60,7 @@ public class ContarPalabras {
 
         // Contar las palabras y mostrar las más frecuentes
         Map<String, Integer> frecuencias = contarPalabras(archivo);
-        mostrarFrecuencias(frecuencias, 15); // Mostrar las 15 palabras más frecuentes
+        mostrarFrecuencias(frecuencias); // Mostrar las 15 palabras más frecuentes
 
         long endTime = System.currentTimeMillis();
         long tiempoEjecucion = endTime - startTime;

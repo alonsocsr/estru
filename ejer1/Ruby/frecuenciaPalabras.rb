@@ -21,8 +21,8 @@ def contar_palabras(archivo)
   end
   
   # Método para mostrar las palabras más frecuentes
-  def mostrar_frecuencias(frecuencias, limite=15)
-    frecuencias.sort_by { |palabra, cuenta| -cuenta }[0...limite].each do |palabra, cuenta|
+  def mostrar_frecuencias(frecuencias)
+    frecuencias.sort_by { |palabra, cuenta| -cuenta }.each do |palabra, cuenta|
       puts "#{palabra}: #{cuenta}"
     end
   end
