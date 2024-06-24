@@ -60,7 +60,7 @@ public class ContarPalabras {
 
         // Contar las palabras y mostrar las más frecuentes
         Map<String, Integer> frecuencias = contarPalabras(archivo);
-        mostrarFrecuencias(frecuencias); // Mostrar las 15 palabras más frecuentes
+        mostrarFrecuencias(frecuencias); 
 
         long endTime = System.currentTimeMillis();
         long tiempoEjecucion = endTime - startTime;

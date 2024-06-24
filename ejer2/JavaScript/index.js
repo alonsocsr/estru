@@ -45,7 +45,7 @@ function main() {
     let rows1 = 200, cols1 = 250;
     let rows2 = 250, cols2 = 210;
 
-    let startTime = Date.now();
+    const startTime = process.hrtime();
 
     let mat1 = generateMatrix(rows1, cols1);
     let mat2 = generateMatrix(rows2, cols2);
@@ -59,10 +59,11 @@ function main() {
     fs.appendFileSync(file, '\nResult:\n', 'utf8');
     writeMatrixToFile(file, result);
 
-    let endTime = Date.now();
-    let executionTimeMs = endTime - startTime;
     console.log('Las Matrices y el resultado fueron escritas en matrices_result.csv');
-    console.log(`Execution time: ${executionTimeMs} ms`);
+    
+    const endTime = process.hrtime(startTime);
+    const executionTime = (endTime[0] * 1000) + (endTime[1] / 1e6);
+    console.log(`Execution Time: ${executionTime} milliseconds`);
 }
 
 main();

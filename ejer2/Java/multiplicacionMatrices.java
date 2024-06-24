@@ -16,16 +16,6 @@ public class multiplicacionMatrices {
         return matriz;
     }
 
-    // Función para imprimir una matriz en consola
-    public static void imprimirMatriz(int[][] matriz) {
-        for (int[] fila : matriz) {
-            for (int valor : fila) {
-                System.out.print(valor + " ");
-            }
-            System.out.println();
-        }
-    }
-
     // Función para escribir una matriz en un archivo CSV
     public static void escribirMatrizEnCSV(int[][] matriz, String nombreArchivo, String encabezado) {
         try (FileWriter writer = new FileWriter(nombreArchivo, true)) {
@@ -50,15 +40,6 @@ public class multiplicacionMatrices {
         int[][] matrizA = generarMatrizAleatoria(filasA, columnasA);
         int[][] matrizB = generarMatrizAleatoria(filasB, columnasB);
 
-        // Imprimir las matrices A y B
-        System.out.println("Matriz A (" + filasA + "x" + columnasA + "):");
-        imprimirMatriz(matrizA);
-        System.out.println("\nMatriz B (" + filasB + "x" + columnasB + "):");
-        imprimirMatriz(matrizB);
-
-        // Medir el tiempo de ejecución
-        long startTime = System.nanoTime();
-
         // Multiplicar las matrices
         int[][] resultado = new int[filasA][columnasB];
         for (int i = 0; i < filasA; i++) {
@@ -73,14 +54,7 @@ public class multiplicacionMatrices {
         escribirMatrizEnCSV(matrizA, "resul.csv", "Matriz A (" + filasA + "x" + columnasA + "):");
         escribirMatrizEnCSV(matrizB, "resul.csv", "Matriz B (" + filasB + "x" + columnasB + "):");
         escribirMatrizEnCSV(resultado, "resul.csv", "Resultado de la multiplicacion:");
-
-        // Calcular y mostrar el tiempo de ejecución
-        long endTime = System.nanoTime();
-        long tiempoNano = endTime - startTime;
-        double tiempoMs = tiempoNano / 1_000_000.0; // Convertir nanosegundos a milisegundos
-
-        System.out.println("\nTiempo de ejecución para multiplicar matrices de tamaño "
-                + filasA + "x" + columnasA + " y " + filasB + "x" + columnasB + ": " + tiempoMs + " milisegundos");
+        
     }
 
     public static void main(String[] args) {
@@ -89,6 +63,17 @@ public class multiplicacionMatrices {
         int filasB = 250;
         int columnasB = 210;
 
+        // Medir el tiempo de ejecución
+        long startTime = System.nanoTime();
+
         multiplicarMatrices(filasA, columnasA, filasB, columnasB);
+
+        
+        // Calcular y mostrar el tiempo de ejecución
+        long endTime = System.nanoTime();
+        long tiempoNano = endTime - startTime;
+        double tiempoMs = tiempoNano / 1_000_000.0; // Convertir nanosegundos a milisegundos
+        System.out.println("\nTiempo de ejecución para multiplicar matrices de tamaño "
+                + filasA + "x" + columnasA + " y " + filasB + "x" + columnasB + ": " + tiempoMs + " milisegundos");
     }
 }
