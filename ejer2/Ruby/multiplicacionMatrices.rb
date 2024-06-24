@@ -37,7 +37,7 @@ def multiplicar_matrices(filas_a, columnas_a, filas_b, columnas_b)
   # Escribir todas las matrices en un solo archivo CSV
   matrices_para_escribir = [matriz_a, matriz_b, resultado]
   nombres_matrices = ["Matriz A (#{filas_a}x#{columnas_a}):", "Matriz B (#{filas_b}x#{columnas_b}):", "Resultado de la multiplicación:"]
-  escribir_varias_matrices_en_archivo(matrices_para_escribir, nombres_matrices, 'resul.csv')
+  escribir_varias_matrices_en_archivo(matrices_para_escribir, nombres_matrices, 'matrices_result.csv')
 
   tiempo_ms = (tiempo * 1000).round(4)
   puts "\nTiempo de ejecución para multiplicar matrices de tamaño #{filas_a}x#{columnas_a} y #{filas_b}x#{columnas_b}: #{tiempo_ms} milisegundos"
